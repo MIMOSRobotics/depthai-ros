@@ -50,7 +50,7 @@ int main(int argc, char** argv) {
     stereo->initialConfig->setLeftRightCheckThreshold(10);
     stereo->setDefaultProfilePreset(dai::node::StereoDepth::PresetMode::DEFAULT);
 
-    imu->enableIMUSensor(dai::IMUSensor::ACCELEROMETER_UNCALIBRATED, 200);
+    imu->enableIMUSensor(dai::IMUSensor::ACCELEROMETER_RAW, 200);
     imu->enableIMUSensor(dai::IMUSensor::GYROSCOPE_UNCALIBRATED, 200);
     imu->setBatchReportThreshold(1);
     imu->setMaxBatchReports(10);

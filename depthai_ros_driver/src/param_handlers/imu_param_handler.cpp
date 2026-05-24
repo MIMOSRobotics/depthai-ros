@@ -1,5 +1,4 @@
 #include "depthai_ros_driver_v3/param_handlers/imu_param_handler.hpp"
-#include <depthai/device/Platform.hpp>
 
 #include "depthai/pipeline/node/IMU.hpp"
 #include "depthai_bridge/ImuConverter.hpp"
@@ -24,7 +23,7 @@ ImuParamHandler::ImuParamHandler(std::shared_ptr<rclcpp::Node> node, const std::
                              {"ARVR_STABILIZED_ROTATION_VECTOR", dai::IMUSensor::ARVR_STABILIZED_ROTATION_VECTOR},
                              {"ARVR_STABILIZED_GAME_ROTATION_VECTOR", dai::IMUSensor::ARVR_STABILIZED_GAME_ROTATION_VECTOR}};
     accelerometerModeMap = {{"ACCELEROMETER_RAW", dai::IMUSensor::ACCELEROMETER_RAW},
-                            {"ACCELEROMETER_UNCALIBRATED", dai::IMUSensor::ACCELEROMETER_UNCALIBRATED},
+                            {"ACCELEROMETER_UNCALIBRATED", dai::IMUSensor::ACCELEROMETER_RAW},
                             {"ACCELEROMETER", dai::IMUSensor::ACCELEROMETER},
                             {"LINEAR_ACCELERATION", dai::IMUSensor::LINEAR_ACCELERATION},
                             {"GRAVITY", dai::IMUSensor::GRAVITY}};
@@ -47,7 +46,7 @@ void ImuParamHandler::declareParams(std::shared_ptr<dai::node::IMU> imu, const s
     declareAndLogParam<float>("i_mag_cov", 0.0);
     declareAndLogParam<float>("i_rot_cov", 0.0);
     if(declareAndLogParam<bool>("i_enable_acc", true)) {
-        const std::string accelerometerModeName = utils::getUpperCaseStr(declareAndLogParam<std::string>("i_acc_mode", "ACCELEROMETER_UNCALIBRATED"));
+        const std::string accelerometerModeName = utils::getUpperCaseStr(declareAndLogParam<std::string>("i_acc_mode", "ACCELEROMETER_RAW"));
         const dai::IMUSensor accelerometerMode = utils::getValFromMap(accelerometerModeName, accelerometerModeMap);
         const int accelerometerFreq = declareAndLogParam<int>("i_acc_freq", 480);
 

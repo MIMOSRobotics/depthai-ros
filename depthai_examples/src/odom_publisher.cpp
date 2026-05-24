@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
     left->requestOutput(std::make_pair(width, height))->link(odom->left);
     right->requestOutput(std::make_pair(width, height))->link(odom->right);
     imu->out.link(odom->imu);
-    imu->enableIMUSensor(dai::IMUSensor::ACCELEROMETER_UNCALIBRATED, 480);
+    imu->enableIMUSensor(dai::IMUSensor::ACCELEROMETER_RAW, 480);
     imu->enableIMUSensor(dai::IMUSensor::GYROSCOPE_UNCALIBRATED, 400);
     imu->setBatchReportThreshold(1);
     imu->setMaxBatchReports(10);
