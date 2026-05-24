@@ -32,7 +32,7 @@ T getValFromMap(const std::string& name, const std::unordered_map<std::string, T
     }
 }
 std::string getUpperCaseStr(const std::string& string);
-dai::PipelineAutoCalibrationMode parsePipelineAutoCalibrationMode(const std::string& mode);
+// dai::PipelineAutoCalibrationMode parsePipelineAutoCalibrationMode(const std::string& mode);
 struct VideoEncoderConfig {
     bool enabled = false;
     int quality = 50;

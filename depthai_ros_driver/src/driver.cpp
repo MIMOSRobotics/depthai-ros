@@ -192,10 +192,10 @@ void Driver::getDeviceType() {
 
 void Driver::createPipeline() {
     generator = std::make_unique<pipeline_gen::PipelineGenerator>();
-    const auto autoCalibrationMode = ph->getParam<std::string>("i_pipeline_auto_calibration_mode");
-    if(!autoCalibrationMode.empty()) {
-        pipeline->setAutoCalibrationMode(utils::parsePipelineAutoCalibrationMode(autoCalibrationMode));
-    }
+    // const auto autoCalibrationMode = ph->getParam<std::string>("i_pipeline_auto_calibration_mode");
+    // if(!autoCalibrationMode.empty()) {
+    //     pipeline->setAutoCalibrationMode(utils::parsePipelineAutoCalibrationMode(autoCalibrationMode));
+    // }
     if(!ph->getParam<std::string>("i_external_calibration_path").empty()) {
         loadCalib(ph->getParam<std::string>("i_external_calibration_path"));
     }
